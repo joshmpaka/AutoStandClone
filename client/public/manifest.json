@@ -1,0 +1,46 @@
+{
+  "baseUrl": "https://cc.nostrasys.com",
+  "generatedAt": "2026-07-21T14:56:09.125Z",
+  "results": [
+    {
+      "label": "supervisor-dashboard",
+      "route": "/supervisor/dashboard",
+      "finalPath": "/supervisor/dashboard",
+      "file": "/home/ubuntu/projects/OCX/screenshots/route-checks/supervisor-dashboard.png",
+      "bytes": 160185,
+      "rootTextLength": 2186,
+      "ok": true,
+      "failures": []
+    },
+    {
+      "label": "live-call-control",
+      "route": "/supervisor/live-calls",
+      "finalPath": "/supervisor/live-calls",
+      "file": "/home/ubuntu/projects/OCX/screenshots/route-checks/live-call-control.png",
+      "bytes": 137467,
+      "rootTextLength": 1644,
+      "ok": true,
+      "failures": []
+    },
+    {
+      "label": "agent-dashboard",
+      "route": "/agent/workspace",
+      "finalPath": "/agent/workspace",
+      "file": "/home/ubuntu/projects/OCX/screenshots/route-checks/agent-dashboard.png",
+      "bytes": 169612,
+      "rootTextLength": 1913,
+      "ok": true,
+      "failures": []
+    },
+    {
+      "label": "wallboard",
+      "route": "/supervisor/wallboard",
+      "finalPath": "/supervisor/wallboard",
+      "file": "/home/ubuntu/projects/OCX/screenshots/route-checks/wallboard.png",
+      "bytes": 124180,
+      "rootTextLength": 1000,
+      "ok": true,
+      "failures": []
+    }
+  ]
+}
