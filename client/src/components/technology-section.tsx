@@ -1,9 +1,26 @@
 import { motion } from "framer-motion";
-import { Settings, Monitor, Wifi, Box } from "lucide-react";
+import { Settings, Monitor, Wifi, Box, Headphones } from "lucide-react";
 import { Link } from "wouter";
 
 export default function TechnologySection() {
   const technologies = [
+    {
+      icon: Headphones,
+      title: "OCX Contact Center",
+      image: "/supervisor-dashboard.png",
+      alt: "OCX omnichannel contact center supervisor dashboard",
+      color: "text-primary",
+      borderColor: "hover:border-blue-500/50",
+      subServices: [
+        "Omnichannel CCaaS platform",
+        "Live call control and supervision",
+        "Agent workspace and campaign tools",
+        "Wallboard and real-time monitoring",
+        "Reports, queues, and recordings",
+        "Customer support operations"
+      ],
+      link: "/ocx"
+    },
     {
       icon: Settings,
       title: "Digital Marketing Service",

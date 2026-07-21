@@ -89,6 +89,20 @@ export default function Navigation() {
 */}
 
           <div className="flex items-center space-x-4">
+            <Link href="/ocx">
+              <Button
+                variant="ghost"
+                size="sm"
+                className={
+                  location === "/ocx"
+                    ? "text-primary hover:text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }
+                data-testid="button-ocx-nav"
+              >
+                OCX
+              </Button>
+            </Link>
             <Link href="/contact">
               <Button
                 variant="ghost"

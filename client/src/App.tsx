@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Home from "@/pages/home";
 import Contact from "@/pages/contact";
 import Careers from "@/pages/careers";
+import OCXPage from "@/pages/ocx";
 import NotFound from "@/pages/not-found";
 import ITManagedService from "@/pages/services/digital-marketing-service";
 import SoftwareDevelopment from "@/pages/services/software-development";
@@ -21,6 +22,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/ocx" component={OCXPage} />
       <Route path="/contact" component={Contact} />
       <Route path="/careers" component={Careers} />
       <Route path="/services/digital-marketing-service" component={ITManagedService} />
