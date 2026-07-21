@@ -100,13 +100,9 @@ export default function OCXPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, ease: "easeOut" }}
                 >
-                  <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
-                    <Headphones className="h-4 w-4" />
-                    Adobe Technologies Product
-                  </div>
-
                   <div className="space-y-5">
-                    <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
+                    <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-accent">
+                      <Headphones className="h-4 w-4" />
                       OCX Omnichannel CCaaS
                     </p>
                     <h1 className="text-4xl md:text-6xl font-bold leading-tight">
