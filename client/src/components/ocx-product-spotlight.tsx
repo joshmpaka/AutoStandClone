@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ocxScreenshots } from "@/lib/ocx";
-import { LayoutGroup, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   BarChart3,
@@ -49,6 +49,7 @@ const capabilities = [
 ];
 
 export default function OCXProductSpotlight() {
+  const shouldReduceMotion = useReducedMotion();
   const [activeScreenshotIndex, setActiveScreenshotIndex] = useState(0);
   const activeScreenshot =
     ocxScreenshots[activeScreenshotIndex] ?? ocxScreenshots[0];
@@ -167,69 +168,83 @@ export default function OCXProductSpotlight() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
           >
-            <LayoutGroup id="ocx-screenshot-gallery">
-              <motion.div
-                layout
-                layoutId={`ocx-screenshot-${activeScreenshot.src}`}
-                className="rounded-2xl border border-primary/25 bg-card shadow-2xl shadow-primary/10 overflow-hidden"
-                transition={{ type: "spring", stiffness: 260, damping: 28 }}
-              >
-                <div className="flex items-center justify-between border-b border-border bg-secondary/80 px-4 py-3">
-                  <div className="flex items-center gap-2">
-                    <span className="h-3 w-3 rounded-full bg-red-400" />
-                    <span className="h-3 w-3 rounded-full bg-accent" />
-                    <span className="h-3 w-3 rounded-full bg-green-500" />
-                  </div>
-                  <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-green-500" />
-                    {activeScreenshot.title}
-                  </div>
+            <motion.div
+              className="rounded-2xl border border-primary/25 bg-card shadow-2xl shadow-primary/10 overflow-hidden"
+              animate={
+                shouldReduceMotion
+                  ? undefined
+                  : { y: [0, -7, 0, 5, 0], rotate: [0, -0.25, 0.2, 0] }
+              }
+              transition={{
+                duration: 7,
+                ease: "easeInOut",
+                repeat: Infinity,
+              }}
+            >
+              <div className="flex items-center justify-between border-b border-border bg-secondary/80 px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <span className="h-3 w-3 rounded-full bg-red-400" />
+                  <span className="h-3 w-3 rounded-full bg-accent" />
+                  <span className="h-3 w-3 rounded-full bg-green-500" />
                 </div>
-                <motion.img
-                  src={activeScreenshot.src}
-                  alt={activeScreenshot.alt}
-                  className="aspect-[1.44] w-full object-cover object-top"
-                  loading="lazy"
-                  decoding="async"
-                  layout="position"
-                  transition={{ type: "spring", stiffness: 260, damping: 28 }}
-                />
-              </motion.div>
+                <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-green-500" />
+                  {activeScreenshot.title}
+                </div>
+              </div>
+              <div className="relative aspect-[1.44] w-full overflow-hidden bg-secondary">
+                <AnimatePresence initial={false}>
+                  <motion.img
+                    key={activeScreenshot.src}
+                    src={activeScreenshot.src}
+                    alt={activeScreenshot.alt}
+                    className="absolute inset-0 h-full w-full object-cover object-top"
+                    loading="eager"
+                    decoding="async"
+                    initial={{ opacity: 0, x: 56, scale: 0.94, rotate: -1.5 }}
+                    animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
+                    exit={{ opacity: 0, x: -42, scale: 1.03, rotate: 1 }}
+                    transition={{ type: "spring", stiffness: 240, damping: 28 }}
+                  />
+                </AnimatePresence>
+              </div>
+            </motion.div>
 
-              <div className="grid sm:grid-cols-3 gap-4 mt-4">
-                {supportingScreenshots.map((screenshot) => (
-                  <motion.button
-                    key={screenshot.title}
-                    type="button"
-                    layout
-                    layoutId={`ocx-screenshot-${screenshot.src}`}
-                    onClick={() => setActiveScreenshotIndex(screenshot.index)}
-                    className="group rounded-xl border border-border bg-card p-2 text-left transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                    whileHover={{ y: -4, rotate: -0.6 }}
-                    whileTap={{ scale: 0.98, rotate: 0 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 28 }}
-                    aria-label={`Show ${screenshot.title} screenshot`}
-                  >
+            <div className="grid sm:grid-cols-3 gap-4 mt-4">
+              {supportingScreenshots.map((screenshot) => (
+                <motion.button
+                  key={screenshot.title}
+                  layout
+                  type="button"
+                  onClick={() => setActiveScreenshotIndex(screenshot.index)}
+                  className="group rounded-xl border border-border bg-card p-2 text-left transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  whileHover={{ y: -4, rotate: -0.6 }}
+                  whileTap={{ scale: 0.96, rotate: -2 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 28 }}
+                  aria-label={`Show ${screenshot.title} screenshot`}
+                >
+                  <div className="overflow-hidden rounded-lg">
                     <motion.img
                       src={screenshot.src}
                       alt={screenshot.alt}
-                      className="aspect-[1.44] w-full rounded-lg object-cover object-top"
+                      className="aspect-[1.44] w-full object-cover object-top"
                       loading="lazy"
                       decoding="async"
-                      layout="position"
+                      whileHover={{ scale: 1.04 }}
+                      transition={{ duration: 0.25, ease: "easeOut" }}
                     />
-                    <div className="px-1 pt-3 pb-1">
-                      <p className="text-sm font-semibold group-hover:text-primary">
-                        {screenshot.title}
-                      </p>
-                      <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
-                        {screenshot.description}
-                      </p>
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
-            </LayoutGroup>
+                  </div>
+                  <div className="px-1 pt-3 pb-1">
+                    <p className="text-sm font-semibold group-hover:text-primary">
+                      {screenshot.title}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+                      {screenshot.description}
+                    </p>
+                  </div>
+                </motion.button>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
