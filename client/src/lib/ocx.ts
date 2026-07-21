@@ -1,5 +1,5 @@
 export const ocxKeywords =
-  "OCX, OCXX, Adobe IT Uganda OCX, Omnichannel CCaaS, Contact Center Software, Call Center Solution, Customer Support Platform, Contact Center Uganda, live call control, supervisor dashboard, agent workspace, wallboard, real-time monitoring, call recordings, queues";
+  "OCX, OCXX, Adobe Technologies OCX, Omnichannel CCaaS, Contact Center Software, Call Center Solution, Customer Support Platform, Contact Center Uganda, live call control, supervisor dashboard, agent workspace, wallboard, real-time monitoring, call recordings, queues";
 
 export const ocxScreenshots = [
   {
@@ -48,7 +48,7 @@ export const ocxSoftwareApplicationSchema = {
   url: "https://adobeitechug.com/ocx",
   image: "https://adobeitechug.com/supervisor-dashboard.png",
   description:
-    "OCX is Adobe IT Uganda's omnichannel CCaaS contact center software for live call control, supervisor dashboards, agent workspaces, wallboards, reporting, recordings, queues, and customer support operations.",
+    "OCX is Adobe Technologies' omnichannel CCaaS contact center software for live call control, supervisor dashboards, agent workspaces, wallboards, reporting, recordings, queues, and customer support operations.",
   publisher: {
     "@type": "Organization",
     name: "Adobe Technologies Limited Uganda",
@@ -65,7 +65,7 @@ export const ocxProductSchema = {
   category: "Omnichannel CCaaS / Contact Center Solution",
   brand: {
     "@type": "Brand",
-    name: "Adobe IT Uganda",
+    name: "Adobe Technologies",
   },
   manufacturer: {
     "@type": "Organization",

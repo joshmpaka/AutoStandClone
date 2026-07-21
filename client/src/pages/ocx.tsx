@@ -72,8 +72,8 @@ export default function OCXPage() {
   return (
     <>
       <SEOHead
-        title="OCX Contact Center Software Uganda | Omnichannel CCaaS by Adobe IT Uganda"
-        description="OCX is Adobe IT Uganda's omnichannel CCaaS and contact center software for live call control, supervisor dashboards, agent workspaces, wallboards, queues, recordings, reports, and customer support operations."
+        title="OCX Contact Center Software Uganda | Omnichannel CCaaS by Adobe Technologies"
+        description="OCX is Adobe Technologies' omnichannel CCaaS and contact center software for live call control, supervisor dashboards, agent workspaces, wallboards, queues, recordings, reports, and customer support operations."
         keywords={ocxKeywords}
         image="https://adobeitechug.com/supervisor-dashboard.png"
         url="https://adobeitechug.com/ocx"
@@ -102,7 +102,7 @@ export default function OCXPage() {
                 >
                   <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
                     <Headphones className="h-4 w-4" />
-                    Adobe IT Uganda Product
+                    Adobe Technologies Product
                   </div>
 
                   <div className="space-y-5">
@@ -113,7 +113,7 @@ export default function OCXPage() {
                       Contact center software built for live service teams
                     </h1>
                     <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
-                      OCX, also searched as OCXX, is Adobe IT Uganda's modern
+                      OCX, also searched as OCXX, is Adobe Technologies' modern
                       customer support platform for teams that need live call
                       control, supervisor dashboards, agent workspaces,
                       wallboards, reporting, recordings, queues, and omnichannel
@@ -339,7 +339,7 @@ export default function OCXPage() {
                   See how OCX fits your contact center
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-                  Book a focused demo with Adobe IT Uganda to review supervisor
+                  Book a focused demo with Adobe Technologies to review supervisor
                   workflows, agent operations, reporting needs, queues, recordings,
                   and the channels your team supports.
                 </p>

@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <SEOHead
         title="Adobe Technologies Limited Uganda | Professional IT Repair, maintenance, consultancy Solutions and Online Presence"
-        description="We provide top-notch IT services across Uganda and build safe, functional, beautiful, responsive software applications. Let's bring your ideas to life! Explore OCX, Adobe IT Uganda's omnichannel CCaaS contact center software for modern support teams."
+        description="We provide top-notch IT services across Uganda and build safe, functional, beautiful, responsive software applications. Let's bring your ideas to life! Explore OCX, Adobe Technologies' omnichannel CCaaS contact center software for modern support teams."
         keywords={`Adobe Technologies Limited Uganda, IT repair Uganda, IT maintenance Uganda, IT consultancy Uganda, software applications Uganda, ${ocxKeywords}`}
         url="https://adobeitechug.com"
       />

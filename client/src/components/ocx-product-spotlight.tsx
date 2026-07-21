@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ocxScreenshots } from "@/lib/ocx";
-import { motion } from "framer-motion";
+import { LayoutGroup, motion } from "framer-motion";
 import {
   ArrowRight,
   BarChart3,
@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   UsersRound,
 } from "lucide-react";
+import { useState } from "react";
 import { Link } from "wouter";
 
 const capabilities = [
@@ -48,7 +49,12 @@ const capabilities = [
 ];
 
 export default function OCXProductSpotlight() {
-  const [primaryScreenshot, ...supportingScreenshots] = ocxScreenshots;
+  const [activeScreenshotIndex, setActiveScreenshotIndex] = useState(0);
+  const activeScreenshot =
+    ocxScreenshots[activeScreenshotIndex] ?? ocxScreenshots[0];
+  const supportingScreenshots = ocxScreenshots
+    .map((screenshot, index) => ({ ...screenshot, index }))
+    .filter((screenshot) => screenshot.index !== activeScreenshotIndex);
 
   return (
     <section
@@ -83,7 +89,7 @@ export default function OCXProductSpotlight() {
                 center software for modern teams
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                OCX is Adobe IT Uganda's customer support platform for contact
+                OCX is Adobe Technologies' customer support platform for contact
                 centers that need live call control, supervisor visibility, agent
                 productivity, wallboard monitoring, queues, recordings, and
                 omnichannel service operations in one place.
@@ -161,37 +167,56 @@ export default function OCXProductSpotlight() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
           >
-            <div className="rounded-2xl border border-primary/25 bg-card shadow-2xl shadow-primary/10 overflow-hidden">
-              <div className="flex items-center justify-between border-b border-border bg-secondary/80 px-4 py-3">
-                <div className="flex items-center gap-2">
-                  <span className="h-3 w-3 rounded-full bg-red-400" />
-                  <span className="h-3 w-3 rounded-full bg-accent" />
-                  <span className="h-3 w-3 rounded-full bg-green-500" />
+            <LayoutGroup id="ocx-screenshot-gallery">
+              <motion.div
+                layout
+                layoutId={`ocx-screenshot-${activeScreenshot.src}`}
+                className="rounded-2xl border border-primary/25 bg-card shadow-2xl shadow-primary/10 overflow-hidden"
+                transition={{ type: "spring", stiffness: 260, damping: 28 }}
+              >
+                <div className="flex items-center justify-between border-b border-border bg-secondary/80 px-4 py-3">
+                  <div className="flex items-center gap-2">
+                    <span className="h-3 w-3 rounded-full bg-red-400" />
+                    <span className="h-3 w-3 rounded-full bg-accent" />
+                    <span className="h-3 w-3 rounded-full bg-green-500" />
+                  </div>
+                  <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground">
+                    <CheckCircle2 className="h-4 w-4 text-green-500" />
+                    {activeScreenshot.title}
+                  </div>
                 </div>
-                <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground">
-                  <CheckCircle2 className="h-4 w-4 text-green-500" />
-                  OCX operations console
-                </div>
-              </div>
-              <img
-                src={primaryScreenshot.src}
-                alt={primaryScreenshot.alt}
-                className="aspect-[1.44] w-full object-cover object-top"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+                <motion.img
+                  src={activeScreenshot.src}
+                  alt={activeScreenshot.alt}
+                  className="aspect-[1.44] w-full object-cover object-top"
+                  loading="lazy"
+                  decoding="async"
+                  layout="position"
+                  transition={{ type: "spring", stiffness: 260, damping: 28 }}
+                />
+              </motion.div>
 
-            <div className="grid sm:grid-cols-3 gap-4 mt-4">
-              {supportingScreenshots.map((screenshot) => (
-                <Link key={screenshot.title} href="/ocx">
-                  <div className="group rounded-xl border border-border bg-card p-2 transition-all hover:border-primary/60 hover:-translate-y-1">
-                    <img
+              <div className="grid sm:grid-cols-3 gap-4 mt-4">
+                {supportingScreenshots.map((screenshot) => (
+                  <motion.button
+                    key={screenshot.title}
+                    type="button"
+                    layout
+                    layoutId={`ocx-screenshot-${screenshot.src}`}
+                    onClick={() => setActiveScreenshotIndex(screenshot.index)}
+                    className="group rounded-xl border border-border bg-card p-2 text-left transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    whileHover={{ y: -4, rotate: -0.6 }}
+                    whileTap={{ scale: 0.98, rotate: 0 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 28 }}
+                    aria-label={`Show ${screenshot.title} screenshot`}
+                  >
+                    <motion.img
                       src={screenshot.src}
                       alt={screenshot.alt}
                       className="aspect-[1.44] w-full rounded-lg object-cover object-top"
                       loading="lazy"
                       decoding="async"
+                      layout="position"
                     />
                     <div className="px-1 pt-3 pb-1">
                       <p className="text-sm font-semibold group-hover:text-primary">
@@ -201,10 +226,10 @@ export default function OCXProductSpotlight() {
                         {screenshot.description}
                       </p>
                     </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                  </motion.button>
+                ))}
+              </div>
+            </LayoutGroup>
           </motion.div>
         </div>
       </div>
