@@ -5,8 +5,7 @@ export default function Footer() {
     {
       title: "Contact Us",
       links: [
-        { name: "+256 773 073 456", href: "/contact" },
-        { name: "+256 757 410 852", href: "/contact" },
+        { name: "+256 773 073 456 || +256 757 410 852", href: "/contact" },
       ],
       email: "adobeofficialug@gmail.com",
     },
@@ -25,7 +24,7 @@ export default function Footer() {
           {/* Left section (copyright) */}
           <div className="text-center md:text-left text-muted-foreground order-3 md:order-1 mt-6 md:mt-0">
             <p>
-              &copy; 2025 Adobe Technologies.
+              &copy; 2026 Adobe Technologies.
               <br /> All rights reserved.
             </p>
           </div>
